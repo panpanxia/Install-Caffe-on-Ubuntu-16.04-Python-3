@@ -105,4 +105,23 @@ Step 11: Check by importing caffe in python3 interpreter. Open python3 interpret
 1. python3
 2. import caffe
 
+Step 12: Comment the CUDA_ARCH according to the CUDA version
+In line about 35-47 of Makefile.config, look like following:
+
+# CUDA architecture setting: going with all of them.
+# For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
+# For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
+# For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
+CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
+		-gencode arch=compute_20,code=sm_21 \
+		-gencode arch=compute_30,code=sm_30 \
+		-gencode arch=compute_35,code=sm_35 \
+		-gencode arch=compute_50,code=sm_50 \
+		-gencode arch=compute_52,code=sm_52 \
+		-gencode arch=compute_60,code=sm_60 \
+		-gencode arch=compute_61,code=sm_61 \
+		-gencode arch=compute_61,code=compute_61
+		
+Need comment the CUDA_ARCH according to the CUDA version installed already
+
 At this point caffe should be imported and be able to use successfully. Sample "Makefile.config" is added for reference.
