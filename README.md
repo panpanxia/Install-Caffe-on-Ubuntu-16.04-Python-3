@@ -120,8 +120,9 @@ CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
 		-gencode arch=compute_52,code=sm_52 \
 		-gencode arch=compute_60,code=sm_60 \
 		-gencode arch=compute_61,code=sm_61 \
-		-gencode arch=compute_61,code=compute_61
-		
+                -gencode arch=compute_61,code=compute_61
+
+
 Need comment the CUDA_ARCH according to the CUDA version installed already
 
 At this point caffe should be imported and be able to use successfully. Sample "Makefile.config" is added for reference.
